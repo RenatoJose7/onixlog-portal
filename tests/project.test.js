@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {initialProject,validateProject,calculateProgress,mergeSaved} from '../lib/project.js';
+import {initialProject,validateProject,calculateProgress,mergeSaved,isStorageConfigured} from '../lib/project.js';
 import {passwordValid,cookieForLogin,authenticated} from '../lib/auth.js';
 
 test('O progresso começa em 0% sem etapas concluídas',()=>{
@@ -22,6 +22,18 @@ test('Etapas de outro projeto são rejeitadas',()=>{
 });
 test('Dados incompletos voltam para o estado inicial',()=>{
  assert.deepEqual(mergeSaved({stages:[]}).stages,initialProject.stages);
+});
+test('A chave secreta atual do Supabase habilita o armazenamento',()=>{
+ const oldUrl=process.env.SUPABASE_URL;
+ const oldSecret=process.env.SUPABASE_SECRET_KEY;
+ const oldService=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ process.env.SUPABASE_URL='https://example.supabase.co';
+ process.env.SUPABASE_SECRET_KEY='sb_secret_teste';
+ delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ assert.equal(isStorageConfigured(),true);
+ if (oldUrl === undefined) delete process.env.SUPABASE_URL; else process.env.SUPABASE_URL=oldUrl;
+ if (oldSecret === undefined) delete process.env.SUPABASE_SECRET_KEY; else process.env.SUPABASE_SECRET_KEY=oldSecret;
+ if (oldService === undefined) delete process.env.SUPABASE_SERVICE_ROLE_KEY; else process.env.SUPABASE_SERVICE_ROLE_KEY=oldService;
 });
 test('Cookie assinado autentica sem senha no navegador',()=>{
  process.env.ADMIN_PASSWORD='senha-teste-super-segura';

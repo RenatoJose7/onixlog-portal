@@ -30,7 +30,7 @@ No ambiente local os dados são gravados em `.local-data/project.json` após o p
    - `ADMIN_PASSWORD` — sua senha forte; **nunca publique no frontend**.
    - `SESSION_SECRET` — string aleatória secreta com pelo menos 32 caracteres.
    - `SUPABASE_URL` — URL do projeto Supabase.
-   - `SUPABASE_SERVICE_ROLE_KEY` — chave do Supabase para operações do servidor (nunca use `NEXT_PUBLIC_`).
+   - `SUPABASE_SECRET_KEY` — chave secreta do Supabase para operações do servidor (nunca use `NEXT_PUBLIC_`). Projetos antigos também podem usar `SUPABASE_SERVICE_ROLE_KEY`.
 4. Faça o deploy, abra `/admin`, entre com a senha e salve a primeira atualização.
 5. Compartilhe o endereço da **página pública `/`** com Marcelo; mantenha a senha somente com você.
 
