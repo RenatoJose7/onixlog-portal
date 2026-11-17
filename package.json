@@ -1,0 +1,14 @@
+{
+  "name": "mireva-onixlog-portal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portal de acompanhamento do projeto ONIXLOG × MIREVA",
+  "scripts": {
+    "dev": "node server.js",
+    "setup": "node scripts/setup.js",
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" }
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta name="theme-color" content="#10121c" />
+  <title>Admin — ONIXLOG × MIREVA</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="module" src="/admin.js"></script>
+</head>
+<body class="admin-page">
+  <header class="admin-topbar">
+    <div class="wrap admin-navbar">
+      <div class="brand-lockup"><div class="mireva-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div><span class="brand-name">MIREVA<span class="brand-period">.</span></span><span class="brand-times">/</span><span class="brand-client">ADMIN</span></div>
+      <div class="admin-nav-actions"><a href="/" target="_blank" rel="noopener">Ver página pública <span aria-hidden="true">↗</span></a><button id="logout" class="text-button" type="button" hidden>Sair</button></div>
+    </div>
+  </header>
+  <main class="admin-wrap wrap">
+    <section id="loading" class="admin-loading" aria-live="polite">Carregando acesso administrativo...</section>
+    <section id="login-panel" class="login-layout" hidden>
+      <div class="login-aside"><span class="eyebrow-line"></span><p class="mini-heading">ACESSO RESTRITO / MIREVA</p><h1>O controle do projeto está <em>nas suas mãos.</em></h1><p>Acesse para registrar entregas, atualizar prazos e manter a ONIXLOG informada.</p><div class="login-decor" aria-hidden="true"><span>TRACKING SYSTEM</span><strong>01 / 06</strong></div></div>
+      <form id="login-form" class="login-card">
+        <span class="section-kicker">ÁREA ADMINISTRATIVA</span>
+        <h2>Bem-vindo de volta<span class="heading-period">.</span></h2>
+        <p>Entre com a senha definida na configuração do projeto.</p>
+        <label for="password">Senha de administrador</label>
+        <input id="password" name="password" type="password" required autocomplete="current-password" minlength="12" placeholder="Digite sua senha" />
+        <div class="input-note">Sua senha nunca aparece no painel público.</div>
+        <button id="login-button" type="submit" class="primary-button">Entrar no painel <span aria-hidden="true">→</span></button>
+        <p id="login-error" class="form-error" hidden role="alert"></p>
+      </form>
+    </section>
+    <section id="editor-panel" class="editor" hidden>
+      <div class="editor-heading"><div><span class="section-kicker">CENTRAL DE ATUALIZAÇÕES</span><h1>Acompanhamento ONIXLOG<span class="heading-period">.</span></h1><p>Edite as informações que o Marcelo verá no painel público.</p></div><div class="save-actions"><span id="save-status" role="status"></span><button id="save-top" class="primary-button" type="button">Salvar alterações <span aria-hidden="true">↗</span></button></div></div>
+      <form id="editor-form" novalidate>
+        <div class="editor-grid">
+          <div class="editor-main">
+            <article class="admin-card"><div class="card-heading"><span class="section-kicker">01 / VISÃO GERAL</span><h2>Informações do projeto</h2></div>
+              <div class="field"><label for="field-name">Título do projeto</label><input id="field-name" maxlength="90" required /></div>
+              <div class="field"><label for="field-summary">Descrição para o cliente</label><textarea id="field-summary" maxlength="340" rows="3" required></textarea></div>
+              <div class="field-split"><div class="field"><label for="field-phase">Fase atual</label><input id="field-phase" maxlength="90" required /></div><div class="field"><label for="field-target">Previsão geral <span class="optional">(opcional)</span></label><input id="field-target" type="date" /></div></div>
+              <div class="field"><label for="field-next">Próxima ação</label><textarea id="field-next" maxlength="320" rows="2" required></textarea></div>
+            </article>
+            <article class="admin-card"><div class="card-heading"><span class="section-kicker">02 / ROADMAP</span><h2>Etapas e entregas</h2><p>Marque o status de cada etapa. O progresso é calculado automaticamente.</p></div><div id="stage-editors" class="stage-editors"></div></article>
+            <article class="admin-card"><div class="card-heading"><span class="section-kicker">03 / COMUNICAÇÃO</span><h2>Registrar atualização</h2><p>Uma nova mensagem aparece no histórico com a data do salvamento. Deixe vazio para salvar sem publicar uma nota.</p></div>
+              <div class="field"><label for="field-note">Mensagem para Marcelo <span class="optional">(opcional)</span></label><textarea id="field-note" maxlength="450" rows="3" placeholder="Ex.: Concluímos o levantamento inicial e vamos iniciar a revisão técnica."></textarea><span class="input-note">Não inclua senhas, documentos, valores contratuais ou dados pessoais.</span></div>
+            </article>
+          </div>
+          <aside class="editor-sidebar"><div class="admin-card sticky-summary"><span class="section-kicker">RESUMO DA PUBLICAÇÃO</span><div id="admin-progress" class="big-progress">0%</div><p>das etapas concluídas</p><div class="small-stats"><div><strong id="admin-done">0</strong><span>Concluídas</span></div><div><strong id="admin-active">1</strong><span>Em andamento</span></div></div><div class="sidebar-separator"></div><span class="summary-legend">Seus ajustes ficarão visíveis no portal público após salvar.</span><button id="save-bottom" class="primary-button" type="button">Salvar alterações <span aria-hidden="true">↗</span></button></div></aside>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
